@@ -720,6 +720,11 @@ p {
     transform: translateY(-2px);
 }
 
+#residency-programs .btn-primary {
+    background-color: #d4af37;
+    color: #000;
+}
+
 /* New Rankings Table Design */
 .rankings-table {
     background-color: #fff;
