@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Residency - We believe every story is worth sharing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+    // Parallax effect for hero background
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const speed = 0.5;
+      
+      // Parallax for hero background
+      const yPos = -(scrolled * speed);
+      document.documentElement.style.setProperty('--parallax-y', `${yPos}px`);
+      
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      if (scrolled > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add animation classes to elements
+      const animateElements = () => {
+        // Hero content animation
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) heroContent.classList.add('fade-in');
+        
+        // Section animations with alternating effects
+        document.querySelectorAll('section').forEach((section, index) => {
+          if (index % 2 === 0) {
+            section.classList.add('fade-in');
+          } else {
+            section.classList.add('scale-in');
+          }
+        });
+        
+        // Headings animations
+        document.querySelectorAll('section h2').forEach((heading, index) => {
+          heading.classList.add('slide-in-left');
+          heading.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        // Paragraphs animations
+        document.querySelectorAll('section p').forEach((p, index) => {
+          p.classList.add('fade-in');
+          p.style.transitionDelay = `${index * 0.05}s`;
+        });
+        
+        // Card animations with stagger
+        document.querySelectorAll('.feature-cards .card').forEach((card, index) => {
+          card.classList.add('scale-in');
+          card.style.transitionDelay = `${index * 0.15}s`;
+        });
+        
+        document.querySelectorAll('.programs article').forEach((article, index) => {
+          if (index % 2 === 0) {
+            article.classList.add('slide-in-left');
+          } else {
+            article.classList.add('slide-in-right');
+          }
+          article.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        document.querySelectorAll('.news-cards article').forEach((article, index) => {
+          article.classList.add('fade-in');
+          article.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        // Table animation
+        const table = document.querySelector('table');
+        if (table) {
+          table.classList.add('fade-in');
+          document.querySelectorAll('table tr').forEach((row, index) => {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-20px)';
+            row.style.transition = 'all 0.5s ease';
+            row.style.transitionDelay = `${index * 0.05}s`;
+          });
+        }
+        
+        // Button animations
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach((btn, index) => {
+          btn.classList.add('scale-in');
+          btn.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        // Footer animation
+        const footer = document.querySelector('#footer');
+        if (footer) footer.classList.add('fade-in');
+      };
+      
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Special handling for table rows
+            if (entry.target.tagName === 'TABLE') {
+              entry.target.querySelectorAll('tr').forEach((row, index) => {
+                setTimeout(() => {
+                  row.style.opacity = '1';
+                  row.style.transform = 'translateX(0)';
+                }, index * 50);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+      
+      // Initialize animations
+      setTimeout(() => {
+        animateElements();
+        
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, table').forEach(el => {
+          observer.observe(el);
+        });
+      }, 100);
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="#">Global Residency</a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#citizenship-programs">Citizenship Programs</a></li>
+        <li><a href="#residency-programs">Residency Programs</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#insights">Insights</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="contact-btn">CONTACT US</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        We believe every<br>
+        <span class="highlight">STORY</span> is worth<br>
+        sharing
+      </h1>
+      <p class="hero-subtitle">
+        We are Global Residency: leading UAE-based specialists in Residency and Citizenship by Investment. 
+        Say hello to freedom and find your bridge to a new world.
+      </p>
+      <div class="hero-cta">
+        <button class="play-btn" aria-label="Play video">
+          <i class="fas fa-play"></i>
+        </button>
+        <button class="story-btn">WHAT'S YOUR STORY</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section with Dark Background -->
+  <section id="about" class="about-dark">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <p class="expertise-label">EXPERTISE</p>
+          <h2>Your Trusted Partner in Global Mobility</h2>
+          <p class="about-description">
+            We are Global Residency, a premier UAE-based provider of global residency and citizenship solutions, having helped over 8,500 clients obtain second passports and residence permits worldwide.
+          </p>
+          <p class="about-description">
+            Our expert team operates across 15 countries, securing second citizenship or residency for entrepreneurs and their families in the most desirable locations, unlocking opportunities for a brighter future.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <i class="fas fa-globe"></i>
+              <h3>Global Expertise</h3>
+              <p>15 offices worldwide with local market knowledge</p>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Trusted Advisors</h3>
+              <p>12+ years of proven track record</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <h2>Why Choose Global Residency</h2>
+      <div class="feature-cards">
+        <div class="card"><i class="fas fa-globe"></i> Global Citizenship Programs</div>
+        <div class="card"><i class="fas fa-passport"></i> Residency-by-Investment</div>
+        <div class="card"><i class="fas fa-certificate"></i> Government Approved Programs</div>
+        <div class="card"><i class="fas fa-clock"></i> Fast and Proven Track Record</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="citizenship-programs">
+    <div class="container">
+      <h2>Citizenship by <span>Investment</span></h2>
+      <p>Secure a second passport through our carefully curated investment programs, granting access to global mobility and new opportunities.</p>
+      <div class="programs">
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/ag.png" alt="Antigua & Barbuda Flag">
+            <div>
+              <h3>Antigua & Barbuda</h3>
+              <p>Citizenship Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>$230,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">3-6 months</span>
+            </div>
+          </div>
+          <p class="program-description">Citizenship by investment program offering visa-free travel to 150+ countries</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>Visa-free travel to 150+ countries</li>
+              <li>No residency requirements</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/dm.png" alt="Dominica Flag">
+            <div>
+              <h3>Dominica</h3>
+              <p>Citizenship Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>$200,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">3-4 months</span>
+            </div>
+          </div>
+          <p class="program-description">Fast-track citizenship program with excellent value proposition</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>Visa-free travel to 140+ countries</li>
+              <li>No visit required</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/mt.png" alt="Malta Flag">
+            <div>
+              <h3>Malta</h3>
+              <p>Citizenship Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>€600,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">12-36 months</span>
+            </div>
+          </div>
+          <p class="program-description">Premium EU citizenship program with residence requirement</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>EU citizenship</li>
+              <li>Visa-free travel to 180+ countries</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/kn.png" alt="St. Kitts & Nevis Flag">
+            <div>
+              <h3>St. Kitts & Nevis</h3>
+              <p>Citizenship Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>$250,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">4-6 months</span>
+            </div>
+          </div>
+          <p class="program-description">Longest-running citizenship by investment program</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>Visa-free travel to 150+ countries</li>
+              <li>No residency requirements</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn-primary">View All Citizenship Programs <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="passport-rankings">
+    <div class="container">
+      <div class="rankings-table">
+        <div class="rankings-header">
+          <h2>Global Passport Rankings 2024</h2>
+          <p>Based on visa-free destinations and global mobility</p>
+        </div>
+        <div class="table-grid header-row">
+          <div class="cell">Rank</div>
+          <div class="cell">Country</div>
+          <div class="cell">Visa-Free Countries</div>
+          <div class="cell">Program Available</div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><span class="rank-circle">1</span></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/sg.png" alt="Singapore Flag"> Singapore</div>
+          <div class="cell"><strong>195</strong></div>
+          <div class="cell"><span class="status-badge not-available">Not Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><span class="rank-circle">2</span></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Germany</div>
+          <div class="cell"><strong>194</strong></div>
+          <div class="cell"><span class="status-badge not-available">Not Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><span class="rank-circle">3</span></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/it.png" alt="Italy Flag"> Italy</div>
+          <div class="cell"><strong>194</strong></div>
+          <div class="cell"><span class="status-badge not-available">Not Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><span class="rank-circle">4</span></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Spain</div>
+          <div class="cell"><strong>194</strong></div>
+          <div class="cell"><span class="status-badge residency-available"><i class="fas fa-check"></i> Residency Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><span class="rank-circle">5</span></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/jp.png" alt="Japan Flag"> Japan</div>
+          <div class="cell"><strong>193</strong></div>
+          <div class="cell"><span class="status-badge not-available">Not Available</span></div>
+        </div>
+        <div class="table-separator">
+          <span>Our Citizenship & Residency Programs</span>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><strong>33</strong></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/ag.png" alt="Antigua & Barbuda Flag"> Antigua & Barbuda</div>
+          <div class="cell"><strong>151</strong></div>
+          <div class="cell"><span class="status-badge citizenship-available"><i class="fas fa-check"></i> Citizenship Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><strong>42</strong></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/dm.png" alt="Dominica Flag"> Dominica</div>
+          <div class="cell"><strong>145</strong></div>
+          <div class="cell"><span class="status-badge citizenship-available"><i class="fas fa-check"></i> Citizenship Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><strong>25</strong></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/kn.png" alt="St. Kitts & Nevis Flag"> St. Kitts & Nevis</div>
+          <div class="cell"><strong>157</strong></div>
+          <div class="cell"><span class="status-badge citizenship-available"><i class="fas fa-check"></i> Citizenship Available</span></div>
+        </div>
+        <div class="table-grid data-row">
+          <div class="cell"><strong>15</strong></div>
+          <div class="cell country-cell"><img src="https://flagcdn.com/w20/ae.png" alt="United Arab Emirates Flag"> United Arab Emirates</div>
+          <div class="cell"><strong>185</strong></div>
+          <div class="cell"><span class="status-badge residency-available"><i class="fas fa-check"></i> Residency Available</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="residency-programs">
+    <div class="container">
+      <h2>Residency by <span>Investment</span></h2>
+      <p>Obtain permanent or temporary residency in top destinations worldwide through strategic investment opportunities.</p>
+      <div class="programs">
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/ae.png" alt="United Arab Emirates Flag">
+            <div>
+              <h3>United Arab Emirates</h3>
+              <p>Residency Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>AED 2M</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">2-3 months</span>
+            </div>
+          </div>
+          <p class="program-description">Golden Visa offering long-term residency in the UAE</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>10-year renewable visa</li>
+              <li>Sponsor family members</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/pt.png" alt="Portugal Flag">
+            <div>
+              <h3>Portugal</h3>
+              <p>Residency Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>€500,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">6-12 months</span>
+            </div>
+          </div>
+          <p class="program-description">Golden Visa program leading to EU permanent residency</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>EU residency</li>
+              <li>Path to citizenship</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/es.png" alt="Spain Flag">
+            <div>
+              <h3>Spain</h3>
+              <p>Residency Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>€500,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">4-6 months</span>
+            </div>
+          </div>
+          <p class="program-description">Golden Visa program for non-EU investors</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>EU residency</li>
+              <li>Family inclusion</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-header">
+            <img src="https://flagcdn.com/w40/gr.png" alt="Greece Flag">
+            <div>
+              <h3>Greece</h3>
+              <p>Residency Program</p>
+            </div>
+          </div>
+          <div class="program-details">
+            <div class="detail-item">
+              <span>Minimum Investment</span>
+              <strong>€250,000</strong>
+            </div>
+            <div class="detail-item">
+              <span><i class="fas fa-clock"></i> Processing Time</span>
+              <span class="highlight-info">2-4 months</span>
+            </div>
+          </div>
+          <p class="program-description">Most affordable EU Golden Visa program</p>
+          <div class="key-benefits">
+            <h4>Key Benefits:</h4>
+            <ul>
+              <li>EU residency</li>
+              <li>Low investment threshold</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-details">View Program Details <i class="fas fa-arrow-right"></i></a>
+        </article>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn-primary" style="background: #1a2a4a; color: #fff;">View All Residency Programs <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta-expert">
+    <div class="container">
+      <h2>Speak to a <span>Global Expert</span></h2>
+      <p>The Global Residency team has experts across 15 countries. We can advise in 12 languages. Let us help you find the perfect investment migration solution.</p>
+      <div class="feature-cards">
+        <div class="card"><i class="fas fa-globe"></i><strong>Global Presence</strong><br>15 offices worldwide</div>
+        <div class="card"><i class="fas fa-language"></i><strong>Multilingual</strong><br>12 languages supported</div>
+        <div class="card"><i class="fas fa-user-graduate"></i><strong>Expert Advisors</strong><br>Licensed professionals</div>
+      </div>
+      <a href="#" class="btn-primary">Book Free Consultation</a>
+      <a href="tel:+9711234567" class="btn-secondary">Call Us: +971 123 4567</a>
+    </div>
+  </section>
+
+  <section id="insights">
+    <div class="container">
+      <h2>Latest News & Insights</h2>
+      <p>Stay informed with the latest developments in global citizenship and residency programs.</p>
+      <div class="news-cards">
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="News 1">
+          <div class="news-content">
+            <p class="news-date">July 2, 2025</p>
+            <h3>How the Portuguese Golden Visa is Evolving for the Future</h3>
+            <p>A Legacy of Stability and Evolution. The Golden Visa program of Portugal has been one of the most successful residency-by-investment programs...</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1540202404-a2f29016b523?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="News 2">
+          <div class="news-content">
+            <p class="news-date">July 2, 2025</p>
+            <h3>New Nauru Citizenship Program 2025: A Game-Changer for HNWIs</h3>
+            <p>Discover the latest citizenship by investment opportunity in the Pacific, offering unique benefits for high net worth individuals...</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="news-card">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="News 3">
+          <div class="news-content">
+            <p class="news-date">July 2, 2025</p>
+            <h3>Why Latvia's Residency Program is Attracting Global Investors</h3>
+            <p>Explore the growing appeal of Latvia's investment residency program and its strategic advantages for international investors...</p>
+            <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn-primary" style="background: #1a2a4a; color: #fff;">View All Articles <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container footer-columns">
+      <div>
+        <h4>Global Residency</h4>
+        <p>Leading UAE-based specialists in global residency & citizenship by investment.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>Citizenship by Investment</li>
+          <li>Residency by Investment</li>
+          <li>Passport Rankings</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Popular Programs</h4>
+        <ul>
+          <li>Antigua & Barbuda</li>
+          <li>Portugal</li>
+          <li>UAE</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p>Dubai Financial Centre<br>Level 21, Emirates Tower</p>
+        <p>Phone: +971 123 4567</p>
+        <p>Email: info@globalresidency.pro</p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 Global Residency. All rights reserved.</p>
+  </footer>
+</body>
+</html>
