@@ -107,7 +107,7 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 1000;
+    z-index: 4;
     padding: 20px 0;
     transition: all 0.3s ease;
 }
@@ -227,6 +227,7 @@ body {
     align-items: center;
     margin-top: 0;
     overflow: hidden;
+    background: url('images/bg-image.webp') no-repeat center center/cover;
 }
 
 #hero-background-video {
@@ -236,7 +237,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2;
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -248,7 +249,7 @@ body {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    z-index: -1;
+    z-index: 2;
 }
 
 .hero-content {
@@ -256,7 +257,7 @@ body {
     margin: 0 auto;
     padding: 0 40px;
     width: 100%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .hero-title {
@@ -438,7 +439,7 @@ p {
     margin-bottom: 20px;
 }
 
-#about h2, #passport-rankings h2 {
+#about h2 {
     font-family: 'Italiana', sans-serif;
     font-size: clamp(36px, 5vw, 64px);
     font-weight: 300;
@@ -446,6 +447,15 @@ p {
     margin-bottom: 40px;
     color: #fff;
     text-align: left;
+}
+
+#passport-rankings h2 {
+    font-family: 'Italiana', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    color: #fff;
 }
 
 .section-header {
@@ -470,14 +480,15 @@ p {
     color: #fff;
 }
 
-.section-header h1 {
+.section-header h2 {
     font-size: clamp(36px, 5vw, 56px);
     font-weight: 700;
     color: #fff;
     margin: 0;
+    text-align: center;
 }
 
-.section-header h1 span {
+.section-header h2 span {
     color: #d4af37;
     font-weight: 400;
 }
@@ -1266,4 +1277,53 @@ p {
         font-weight: 600;
         margin-right: 10px;
     }
+}
+
+.rankings-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-top: 1px solid #e9ecef;
+}
+
+.rankings-footer p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.rankings-footer-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-green, .btn-blue {
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-green {
+    background-color: #d4af37;
+    color: #000;
+}
+
+.btn-green:hover {
+    background-color: #000;
+    color: #d4af37;
+}
+
+.btn-blue {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #d4af37;
+}
+
+.btn-blue:hover {
+    background-color: #d4af37;
+    color: #000;
 }
