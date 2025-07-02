@@ -11,14 +11,6 @@
 <body>
   <div id="wrapper">
     <div id="content">
-      <!-- Video Player Overlay -->
-      <div id="video-overlay">
-        <div id="video-player">
-          <button id="close-video">&times;</button>
-          <video id="hero-video" src="assets/bg-vdo.mp4" controls></video>
-        </div>
-      </div>
-
       <!-- Navigation -->
       <nav class="navbar">
         <div class="nav-container">
@@ -65,6 +57,9 @@
 
       <!-- Hero Section -->
       <header class="hero">
+        <video autoplay muted loop id="hero-background-video">
+          <source src="assets/bg-vdo.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
           <h1 class="hero-title">
             We believe every<br>
@@ -608,29 +603,6 @@
       //     }
       //   });
       // }
-
-      // Video Player Toggle
-      const playBtn = document.querySelector('.play-btn');
-      const videoOverlay = document.getElementById('video-overlay');
-      const closeVideoBtn = document.getElementById('close-video');
-      const heroVideo = document.getElementById('hero-video');
-
-      playBtn.addEventListener('click', () => {
-        videoOverlay.style.display = 'flex';
-        heroVideo.play();
-      });
-
-      closeVideoBtn.addEventListener('click', () => {
-        videoOverlay.style.display = 'none';
-        heroVideo.pause();
-      });
-
-      videoOverlay.addEventListener('click', (e) => {
-        if (e.target === videoOverlay) {
-          videoOverlay.style.display = 'none';
-          heroVideo.pause();
-        }
-      });
 
       // Offcanvas Menu Toggle
       const navToggle = document.querySelector('.nav-toggle');

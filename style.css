@@ -229,17 +229,14 @@ body {
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
+#hero-background-video {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('images/bg-image.webp') center/cover no-repeat;
-    will-change: transform;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: -2;
-    transform: translateY(var(--parallax-y, 0)) scale(1.1);
 }
 
 .hero::after {
