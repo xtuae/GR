@@ -995,6 +995,11 @@ p {
     max-width: 100%;
 }
 
+.footer-bottom p {
+    text-align: left;
+    margin: 0;
+}
+
 .social-icons {
     display: flex;
     gap: 15px;
@@ -1065,6 +1070,7 @@ p {
     border-top: 1px solid #444;
     font-size: 14px;
     color: #999;
+    text-align: left;
 }
 
 .footer-legal a {
