@@ -1272,10 +1272,15 @@ p {
         padding: 10px 0;
     }
 
-    .table-grid .cell::before {
+        .table-grid .cell::before {
         content: attr(data-label);
         font-weight: 600;
         margin-right: 10px;
+    }
+    
+    .rankings-footer {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
