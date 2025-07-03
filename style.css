@@ -1432,6 +1432,10 @@ p {
         font-weight: 600;
         margin-right: 10px;
     }
+
+    .table-separator {
+        display: none;
+    }
     
     .rankings-footer {
         flex-direction: column;
