@@ -1267,7 +1267,7 @@ p {
 
     .table-grid .cell {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         border-bottom: 1px solid #e9ecef;
         padding: 10px 0;
         text-align: left;
