@@ -1400,6 +1400,11 @@ p {
         flex-direction: column;
         align-items: center;
     }
+
+    .story-btn {
+        padding: 16px 20px;
+        font-size: 12px;
+    }
     
     .container {
         padding: 60px 20px;
